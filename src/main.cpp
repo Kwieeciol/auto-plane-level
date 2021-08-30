@@ -14,6 +14,7 @@ Angles get_raw_angles();
 Angles get_angles();
 void setup_mpu();
 void calibrate_mpu();
+double get_temperature();
 
 void setup() {
     Wire.begin();
@@ -101,4 +102,14 @@ Angles get_angles() {
         abs(raw_angles.z - offset_z)
     };
     return angles;
+}
+
+double get_temperature() {
+    Wire.beginTransmission(MPU_ADDR);
+    Wire.write(0x41); // register 41, temperature
+    Wire.endTransmission();
+    Wire.requestFrom(MPU_ADDR, 2);
+
+    double temp = Wire.read() << 8 | Wire.read();
+    return temp / 340 + 36.53;
 }
