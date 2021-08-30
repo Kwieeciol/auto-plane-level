@@ -2,9 +2,11 @@
 #include <Wire.h>
 #include "gyroscope.h"
 #include "receiver.h"
+#include "rgb_led.h"
 
 Gyroscope mpu;
 Receiver receiver;
+RGB_LED rgb_led;
 
 void setup() {
     Wire.begin();
@@ -12,11 +14,10 @@ void setup() {
 
     mpu.setup();
     mpu.calibrate();
+    
+    rgb_led.setup();
 }
 
 void loop() {
-    // Angles angles = mpu.get_angles();
-    // Serial.println(angles.y);
-    Serial.println(receiver.should_calibrate());
-    delay(100);
+    delay(500);
 }
