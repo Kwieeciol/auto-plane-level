@@ -19,5 +19,9 @@ void setup() {
 }
 
 void loop() {
+    /* 
+    Read each channel 1 & 2, if the input (-noise) hasn't changed from before, 
+    use the gyroscope to (and some arithmetic equation) to level-up the plane.
+    */
     delay(500);
 }
