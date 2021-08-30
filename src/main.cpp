@@ -8,6 +8,8 @@ Gyroscope mpu;
 Receiver receiver;
 RGB_LED rgb_led;
 
+int before = 0;
+
 void setup() {
     Wire.begin();
     Serial.begin(9600);
@@ -16,12 +18,13 @@ void setup() {
 
     mpu.setup();
     mpu.calibrate();
+
+    receiver.setup();
 }
 
 void loop() {
     /* 
-    Read each channel 1 & 2, if the input (-noise) hasn't changed from before, 
-    use the gyroscope to (and some arithmetic equation) to level-up the plane.
+    If the channels are in rest, use the gyroscope (and some arithmetic equation) to level-up the plane.
     */
-    delay(500);
+    delay(100);
 }

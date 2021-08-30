@@ -1,6 +1,15 @@
 #include <Arduino.h>
 #include "receiver.h"
 
+void Receiver::setup() {
+    this->rest_channel_1 = read_channel(CHANNEL_1);
+    this->rest_channel_2 = read_channel(CHANNEL_2);
+}
+
+void Receiver::calibrate() {
+    setup();
+}
+
 int Receiver::read_channel(int pin) {
     int value = pulseIn(pin, HIGH, 25000);
     if (value == 0) { // retry without timeout
@@ -21,6 +30,18 @@ bool Receiver::is_enabled() {
         enabled = false;
     }
     return enabled;
+}
+
+bool Receiver::is_at_rest(int channel) {
+    int before;
+    if (channel == CHANNEL_1) {
+        before = rest_channel_1;
+    } else {
+        before = rest_channel_2;
+    }
+
+    int value = read_channel(channel);
+    return ((before - REST_RANGE) <= value && value <= (before + REST_RANGE));
 }
 
 bool Receiver::should_calibrate() {
