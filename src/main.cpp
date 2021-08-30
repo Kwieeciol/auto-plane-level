@@ -1,8 +1,10 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include "gyroscope.h"
+#include "receiver.h"
 
 Gyroscope mpu;
+Receiver receiver;
 
 void setup() {
     Wire.begin();
@@ -13,7 +15,8 @@ void setup() {
 }
 
 void loop() {
-    Angles angles = mpu.get_angles();
-    Serial.println(angles.y);
+    // Angles angles = mpu.get_angles();
+    // Serial.println(angles.y);
+    Serial.println(receiver.should_calibrate());
     delay(100);
 }
