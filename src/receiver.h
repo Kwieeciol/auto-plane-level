@@ -4,7 +4,6 @@
 
 #define CHANNEL_1 A7
 #define CHANNEL_2 A6
-#define CHANNEL_4 A2
 #define CHANNEL_5 A1
 #define CHANNEL_6 A0
 
