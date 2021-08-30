@@ -18,4 +18,5 @@ public:
     double get_temperature();
     Angles get_angles();
     Angles get_raw_angles();
+    void fast_calibrate();
 };

@@ -35,7 +35,7 @@ void Gyroscope::calibrate() {
     Serial.println("Calculating offsets, please stay still...");
 
     double av_x = 0.0, av_y = 0.0, av_z = 0.0;
-    int total_runs = 100; // lowered for testing (should be 150+)
+    int total_runs = 100;
 
     for (int i = 0; i < total_runs; i++) {
         Angles angles = get_raw_angles();
@@ -52,6 +52,25 @@ void Gyroscope::calibrate() {
     this->offset_z = av_z / total_runs;
 
     Serial.println("Done calculating offsets.");
+}
+
+void Gyroscope::fast_calibrate() {
+    double av_x = 0.0, av_y = 0.0, av_z = 0.0;
+    int total_runs = 15;
+
+    for (int i = 0; i < total_runs; i++) {
+        Angles angles = get_raw_angles();
+
+        av_x += angles.x;
+        av_y += angles.y;
+        av_z += angles.z;
+
+        delay(25); // 25ms delay between readings
+    }
+
+    this->offset_x = av_x / total_runs;
+    this->offset_y = av_y / total_runs;
+    this->offset_z = av_z / total_runs;
 }
 
 Angles Gyroscope::get_raw_angles() {
