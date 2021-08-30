@@ -54,6 +54,11 @@ void setup_mpu() {
 
 void calibrate_mpu() {
     Serial.println("Calculating offsets, please stay stil...");
+    Serial.print("Offset X = "); Serial.println(offset_x);
+    Serial.print("Offset Y = "); Serial.println(offset_y);
+    Serial.print("Offset Z = "); Serial.println(offset_z);
+    Serial.println();
+
     double av_x = 0.0, av_y = 0.0, av_z = 0.0;
     int total_runs = 100;
 
@@ -69,7 +74,11 @@ void calibrate_mpu() {
     offset_y = av_y / total_runs;
     offset_z = av_z / total_runs;
 
-    Serial.println("Done calculating offsets.");
+    Serial.println("Done calculating offsets, offsets after:");
+    Serial.print("Offset X = "); Serial.println(offset_x);
+    Serial.print("Offset Y = "); Serial.println(offset_y);
+    Serial.print("Offset Z = "); Serial.println(offset_z);
+    Serial.println();
 }
 
 Angles get_raw_angles() {
