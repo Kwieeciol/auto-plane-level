@@ -12,10 +12,10 @@ void setup() {
     Wire.begin();
     Serial.begin(9600);
 
+    rgb_led.setup();
+
     mpu.setup();
     mpu.calibrate();
-    
-    rgb_led.setup();
 }
 
 void loop() {

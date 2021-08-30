@@ -5,35 +5,25 @@ void RGB_LED::setup() {
     pinMode(RED_PIN, OUTPUT);
     pinMode(GREEN_PIN, OUTPUT);
     pinMode(BLUE_PIN, OUTPUT);
+
+    set("black");
 }
 
 void RGB_LED::set(String color) {
     int r, g, b;
 
     if (color == "white") {
-        r = 255;
-        g = 255;
-        b = 255;
+        r = 255; g = 255; b = 255;
     } else if (color == "red") {
-        r = 255;
-        g = 0;
-        b = 0;
+        r = 255; g = 0; b = 0;
     } else if (color == "green") {
-        r = 0;
-        g = 255;
-        b = 0;
+        r = 0; g = 255; b = 0;
     } else if (color == "blue") {
-        r = 0;
-        g = 0;
-        b = 255;
+        r = 0; g = 0; b = 255;
     } else if (color == "yellow") {
-        r = 255;
-        g = 255;
-        b = 0;
+        r = 255; g = 255; b = 0;
     } else {
-        r = 0;
-        g = 0;
-        b = 0;
+        r = 0; g = 0; b = 0;
     }
 
     // reversing, LED's that share a common anode have
