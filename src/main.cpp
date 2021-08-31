@@ -4,7 +4,7 @@
 #include "receiver.h"
 #include "rgb_led.h"
 
-#define MAX_ANGLE 25
+#define MAX_ANGLE 15
 
 Gyroscope mpu;
 Receiver receiver;
