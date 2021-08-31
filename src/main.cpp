@@ -35,7 +35,6 @@ void loop() {
         rgb_led.set("yellow");
         mpu.fast_calibrate();
         receiver.calibrate();
-        rgb_led.set("green");
     }
 
     if (receiver.is_enabled()) {

@@ -10,7 +10,7 @@ struct Angles {double x; double y; double z;};
 
 class Gyroscope {
 private:
-    int offset_x, offset_y, offset_z;
+    double offset_x, offset_y, offset_z;
 public:
     Gyroscope(); // constructor
     void setup();
